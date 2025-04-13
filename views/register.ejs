@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Rejestracja</title>
+        <style>
+            body{
+                background: lightgreen;
+            }
+            .maindiv{
+                margin: auto;
+                width: 800px;
+                border: 5px solid blue;
+                background: lightcyan;
+            }
+            .navdiv{
+                margin: auto;
+                width: 460px;
+                padding: 40px;
+            }
+            .centerdiv{
+                margin: auto;
+                width: 460px;
+                padding: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .logbtn{
+                margin: auto;
+                background: purple;
+                width: 200px;
+                font-size: 20px;
+                color: lightslategray;
+            }
+            .mainbtn{
+                margin: auto;
+                background: lime;
+                width: 450px;
+                font-size: 24px;
+                color: red;
+                padding: 30px;
+            }
+            .title{
+                text-align: center;
+                font-size: 24px;
+                color: darkblue;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="maindiv">
+            <form method="POST">
+                <div id='login'>
+                    <div class="title">
+                        Rejestracja
+                    </div>
+                    <div>
+                        <div class="centerdiv">
+                            <label>Login:</label>
+                        </div>
+                        <div class="centerdiv">
+                            <input type='text' name='username' />
+                        </div>
+                    </div>
+                    <div>
+                        <div class="centerdiv">
+                            <label>Hasło:</label>
+                        </div>
+                        <div class="centerdiv">
+                            <input type='password' name='password' />
+                        </div>
+                    </div>
+                    <div class="centerdiv">
+                        <button class="logbtn">Załóż konto</button>
+                    </div>
+                    <% if ( locals.message ) { %>
+                        <div class='centerdiv'>
+                        <%= locals.message %>
+                        </div>
+                    <% } %>
+                </div>
+            </form>
+            <div class="navdiv">
+                <a href="/"><button class="mainbtn">Wróć</button></a>
+            </div>
+        </div>
+    </body>
+</html

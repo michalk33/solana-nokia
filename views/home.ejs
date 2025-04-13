@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Job offers</title>
+        <style>
+            body{
+                background: lightgreen;
+            }
+            .maindiv{
+                margin: auto;
+                width: 800px;
+                border: 5px solid blue;
+                background: lightcyan;
+            }
+            .logdiv{
+                margin: auto;
+                width: 640px;
+                padding: 80px;
+            }
+            .navdiv{
+                margin: auto;
+                width: 460px;
+                padding: 40px;
+            }
+            .centerdiv{
+                margin: auto;
+                width: 460px;
+                padding: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .logbtn{
+                margin: auto;
+                background: purple;
+                width: 200px;
+                font-size: 20px;
+                color: lightslategray;
+            }
+            .mainbtn{
+                margin: auto;
+                background: lime;
+                width: 450px;
+                font-size: 24px;
+                color: red;
+                padding: 30px;
+            }
+            .title{
+                text-align: center;
+                font-size: 24px;
+                color: darkblue;
+                margin: auto;
+            }
+            .minortitle{
+                text-align: center;
+                font-size: 20px;
+                color: darkblue;
+                margin: auto;
+                width: 780px;
+            }
+            .joinbtn{
+                margin: auto;
+                background: lime;
+                font-size: 10px;
+                color: red;
+            }
+            .table{
+                border: solid darkgreen 3px;
+            }
+            .td{
+                border: solid 1px darkslategray;
+                text-align: center;
+            }
+            .userinfo{
+                text-align: center;
+                font-size: 20px;
+                color: grey;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="maindiv">
+            <div class="title">
+                Your job offers:
+            </div>
+            <div class="centerdiv">
+                <table class="table">
+                    <% for ( const job_offer of locals.job_offers ) { %>
+                        <tr>
+                            <td class="td">
+                                Author: <%= job_offer.username %> <br>
+                                Date: <%= job_offer.post_date.toString().slice(0,15) %>
+                            </td>
+                            <td width=50px class="td">
+                                <%= job_offer.description %>
+                                Place: <%= job_offer.latitude %> <%= job_offer.longitude %>, radius <%= job_offer.radius %>
+                            </td>
+                            <td class="td">
+                                <a href="/offer?offerid=<%= job_offer.offerid %>&offertype=1"><button class="joinbtn">More</button></a> <br>
+                                <a href="/"><button class="joinbtn">Cancel</button></a>
+                            </td>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
+            <div class="title">
+                Your service offers:
+            </div>
+            <div class="centerdiv">
+                <table class="table">
+                    <% for ( const service_offer of locals.service_offers ) { %>
+                        <tr>
+                            <td class="td">
+                                Date: <%= service_offer.post_date.toString().slice(0,15) %>
+                            </td>
+                            <td width=50px class="td">
+                                <%= service_offer.description %>
+                                Place: <%= service_offer.latitude %> <%= service_offer.longitude %>, radius <%= service_offer.radius %>
+                            </td>
+                            <td class="td">
+                                <a href="/offer?offerid=<%= service_offer.offerid %>&offertype=2"><button class="joinbtn">More</button></a> <br>
+                                <a href="/"><button class="joinbtn">Cancel</button></a>
+                            </td>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
+            <div class="navdiv">
+                <a href="/"><button class="mainbtn">Return</button></a>
+            </div>
+            <div class="userinfo">You are logged in as <%= locals.username %></div>
+        </div>
+    </body>
+</html

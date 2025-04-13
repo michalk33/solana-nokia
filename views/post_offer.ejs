@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Job offers</title>
+        <style>
+            body{
+                background: lightgreen;
+            }
+            .maindiv{
+                margin: auto;
+                width: 800px;
+                border: 5px solid blue;
+                background: lightcyan;
+            }
+            .logdiv{
+                margin: auto;
+                width: 640px;
+                padding: 80px;
+            }
+            .navdiv{
+                margin: auto;
+                width: 460px;
+                padding: 40px;
+            }
+            .centerdiv{
+                margin: auto;
+                width: 460px;
+                padding: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .logbtn{
+                margin: auto;
+                background: purple;
+                width: 200px;
+                font-size: 20px;
+                color: lightslategray;
+            }
+            .mainbtn{
+                margin: auto;
+                background: lime;
+                width: 450px;
+                font-size: 24px;
+                color: red;
+                padding: 30px;
+            }
+            .title{
+                text-align: center;
+                font-size: 24px;
+                color: darkblue;
+                margin: auto;
+            }
+            .minortitle{
+                text-align: center;
+                font-size: 20px;
+                color: darkblue;
+                margin: auto;
+                width: 780px;
+            }
+            .joinbtn{
+                margin: auto;
+                background: lime;
+                font-size: 10px;
+                color: red;
+            }
+            .table{
+                border: solid darkgreen 3px;
+            }
+            .td{
+                border: solid 1px darkslategray;
+                text-align: center;
+            }
+            .userinfo{
+                text-align: center;
+                font-size: 20px;
+                color: grey;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="maindiv">
+            <form method="POST">
+                <div id="choose">
+                    <div class="centerdiv">
+                        <div class="minortitle">
+                            New offer
+                        </div>
+                    </div>
+                    <div class="centerdiv">
+                        <select name="offerType" font-size=20px>
+                            <% for ( var k=0; k<locals.offer_types.length; k++ ) { %>
+                                <option value="<%= locals.offer_types[k] %>">
+                                    <%= locals.offer_types[k] %>
+                                </option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div id='offer_data'>
+                        <div>
+                            <div class="centerdiv">
+                                <label>Description:</label>
+                            </div>
+                            <div class="centerdiv">
+                                <input type='text' name='description' />
+                            </div>
+                        </div>
+                        <div>
+                            <div class="centerdiv">
+                                <label>Localization:</label>
+                            </div>
+                            <div class="centerdiv">
+                                <input type='text' name='latitude' />
+                            </div>
+                            <div class="centerdiv">
+                                <input type='text' name='longitude' />
+                            </div>
+                            <div class="centerdiv">
+                                <input type='text' name='radius' />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="centerdiv">
+                        <button class="logbtn">Post</button>
+                    </div>
+                    <% if ( locals.message ) { %>
+                        <div class='centerdiv'>
+                        <%= locals.message %>
+                        </div>
+                    <% } %>
+                </div>
+            </form>
+            <div class="navdiv">
+                <a href="/"><button class="mainbtn">Return</button></a>
+            </div>
+            <div class="userinfo">You are logged in as <%= locals.username %></div>
+        </div>
+    </body>
+</html

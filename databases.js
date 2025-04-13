@@ -46,7 +46,7 @@ exports.getServiceOffersForUser = async function(pool, username){
 }
 
 exports.getServiceOfferByID = async function(pool, id){
-    var result = await pool.query(`SELECT * FROM service_offers WHERE serviceID='${id}' ORDER BY post_date DESC`);
+    var result = await pool.query(`SELECT * FROM service_offers WHERE offerID='${id}' ORDER BY post_date DESC`);
     return result.rows[0];
 }
 

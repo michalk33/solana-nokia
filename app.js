@@ -195,7 +195,6 @@ app.get('/offer', authorize, (req, res) => {
         var offer_type_n;
         var offer_id = req.query.offerid;
         var offer;
-        console.log(offer_type);
         if(offer_type == 1){
             offer = await dtbs.getJobOfferByID(dataPool, offer_id);
             offer_type_n = "Job offer";
@@ -204,7 +203,7 @@ app.get('/offer', authorize, (req, res) => {
             offer = await dtbs.getServiceOfferByID(dataPool, offer_id);
             offer_type_n = "Service offer";
         }
-        res.render('offer', {offer: offer, offer_type_n: offer_type_n, offer_type: offer_type});
+        res.render('offer', {username: req.signedCookies.username, offer: offer, offer_type_n: offer_type_n, offer_type: offer_type});
     })()
 });
 

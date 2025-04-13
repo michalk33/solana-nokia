@@ -1,3 +1,5 @@
+App listens at port 3030.
+
 To install `PostgreSQL`:
 `sudo apt install postgresql`
 
@@ -28,7 +30,7 @@ CREATE TABLE job_offers (
 ); 
 
 CREATE TABLE service_offers (
-    serviceID SERIAL PRIMARY KEY,
+    offerID SERIAL PRIMARY KEY,
     username varchar(255),
     description varchar(255) NOT NULL,
     latitude float NOT NULL,
